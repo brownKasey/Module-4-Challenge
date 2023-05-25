@@ -1,0 +1,132 @@
+:root {
+    --color: #ff7e30
+
+}
+
+/* header elements that always show*/
+header {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+.highscore {
+    text-decoration: none;
+    font-size: 30px;
+    color: var(--color);
+}
+.highscore:hover{
+    transform: scale(105%);
+}
+
+
+
+
+/*starting page*/
+.starting-page {
+    text-align: center;
+}
+#starting-page {
+    display: block;
+}
+.heading {
+    margin-top: 10%;
+    font-size: 65px;
+    color: var(--color);
+    font-weight: bold;
+}
+.paragraph {
+    margin-top: 2%;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-size: 32px;
+}
+.start {
+    margin-top: 1%;
+    word-wrap: normal;
+}
+/* questions and answers */
+.qna {
+    display: none;
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+}
+.question{
+    font-size: 50px;
+}
+#answer1 {
+    margin-top: 30px;
+}
+.answer {
+    margin-top: 10px;
+}
+.qna h3 {
+    display: none;
+    font-size: 35px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+
+button .answer{
+    padding-left: 25px;
+    padding-right: 110px;
+}
+
+/* Game over*/
+.gameover{
+    display: none;
+    text-align: center;
+    margin-top: 10%;
+}
+.gtext{
+    font-size: 65px;
+}
+.gscore {
+    margin-top: 2%;
+    font-size: 35px;
+}
+#input {
+    font-size: 25px;
+}
+.gameover #submit {
+    margin-top: 2%;
+    margin-left: 1%;
+}
+.viewhs {
+    text-align: center;
+    margin-top: 5%;
+}
+.hscores{
+    font-size: 65px;
+}
+.viewhs #clearlist {
+    margin-top: 2%;
+}
+
+/*button designs*/
+button {
+    color: #fff;
+    cursor: pointer;
+    background-color: var(--color);
+    border: 0px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+}
+
+.qna .answer {
+    text-align: center;
+    padding-left: 25px;
+    padding-right: 110px;
+}
+
+button:hover {
+    transform: scale(105%);
+}

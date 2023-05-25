@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coding Quiz Challenge</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./assets/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
+  </head>
+  <header class="always-viewed"> 
+      <a class="highscore" href="./highscores.html">View Highscores</a>
+      <h2>Time:<span class="timer">75</span></h2>
+  </header>
+  <body>
+    <!--starting page-->
+    <section class="starting-page" id="starting-page">
+        <h1 class="heading">Coding Quiz Challenge</h1>
+        <p class="paragraph">Try to answer the following code-related questions within your time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button class="start">Start Quiz</button>
+    </section>
+    <!--question and answers-->
+    <section class="qna" id="qna">
+      <h2><span class="question"></span></h2>
+      <Ul id="answer-btns">
+        <li><button class="answer"><span  id="answer1" >Answer</span></button></li>
+        <li><button class="answer"><span id="answer2" >Answer</span></button></li>
+        <li><button class="answer"><span id="answer3" >Answer</span></button></li>
+        <li><button class="answer" ><span id="answer4" >Answer</span></button></li>
+      </Ul>
+      <h3><span class="option">Correct!</span></h3>
+    </section>
+    <section class="gameover">
+      <h2 class="gtext">Game Over</h2>
+      <p class="gscore">Score: <span class="points">0</span></p>
+      <input type="text" id="input" placeholder="Enter initials">
+      <button id="submit">Submit</button>
+    </section>
+
+
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
