@@ -1,146 +1,213 @@
+//variables referncing html
 var startButton = document.querySelector(".start");
 var timerElement = document.querySelector(".timer");
-var answerBtns = document.querySelector(".answer");
+
 var answer1 = document.querySelector("#answer1");
 var answer2 = document.querySelector("#answer2");
 var answer3 = document.querySelector("#answer3");
 var answer4 = document.querySelector("#answer4");
-var questionEl = document.querySelector(".question");
+var questionEl = document.querySelector("#questionTitle");
+var btns = document.getElementById("answer-btns");
+var btns1 = document.getElementById("answer-btns");
+var btns2 = document.getElementById("answer-btns");
+var btns3 = document.getElementById("answer-btns");
+var btns4 = document.getElementById("answer-btns");
+var optionEl = document.getElementById("option");
 
 //shows previous highscores
 var score = 0;
 var highscores;
 
+// other
+
+
 
 //timer variables
 var timer;
 var timerCount;
-
+var counter = 0;
 function startGame (){
     /*Starts condition for playing the game*/
-
-
     timerCount = 75;
     startButton.disabled = true;
-    hideStart();
-    showQuestions();
-    getQ3();
-   // playGame();
+    playGame();
     startTimer();
 };
 //store the questions into objects along with the answers and the correct answer
+var questions = [];
 var question0 = {
     question: "Commonly used data types do not include what answer?",
     answers: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-    correct: "answer2",
-}
+    correct: "2. booleans",
+};
+questions.push(question0);
+
 var question1 = {
     question: "The condition in an if/else statement is enclosed with _________.",
     answers: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets", ],
-    correct: "answer3",
-}
+    correct: "3. parenthesis",
+};
+questions.push(question1);
+
 var question2 = {
     question: "A very useful tool used during development and deugging for printing content to the debugger is:",
     answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log", ],
-    correct: "answer4",
-}
+    correct: "4. console.log",
+};
+questions.push(question2);
 var question3 = {
     question: "String values must be enclosed within _________ when being assigned to variables.",
     answers: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis", ],
-    correct: "answer3",
-}
+    correct: "3. quotes",
+};
+questions.push(question3);
 var question4 = {
     question: "Arrays in Javascript can be used to store _________.",
     answers: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above", ],
-    correct: "answer4",
-}
+    correct: "4. all of the above",
+};
+questions.push(question4);
 
-//stores all questions into an array
-var allQuestions = [question0, question1, question2, question3, question4];
 
+var currentQuestionIndex = 0;
+var lastQuestionIndex = questions.length - 1;
+var q = questions[currentQuestionIndex];
 
 
 function playGame(event){
-    event.preventDefault();
-
-    var userInput = //something
-    getQ0()
-    if (userInput === allQuestions.question0.answers[0]){
-        showCorrect();
-        getQ1();
-    } else 
-        showWrong();
-        return;
-
-
+    hideStart();
+    showQNA();
+    showQ0();
 }
 function hideQuestion(){
 
 }
-//functions to print questions and answers to html
-function getQ0(){
-    var question0 = {
-        question: "Commonly used data types do not include what answer?",
-        answers: ["1. strings", "2. booleans", "3. alerts", "4. numbers"],
-        correct: "answer2",
-    }
+
+
+//creates a button for each button element with answer class
+var answerBtns = document.querySelectorAll(".answer");
+for (var i = 0; i < answerBtns.length; i++) {
+    answerBtns[i].addEventListener('click', checkAns)
+};
+
+function showQ0(){
     questionEl.textContent = question0.question;
-    answer1.textContent = question0.answers[0];
-    answer2.textContent = question0.answers[1];
-    answer3.textContent = question0.answers[2];
-    answer4.textContent = question0.answers[3];
-};
-function getQ1(){
-    var question1 = {
-        question: "The condition in an if/else statement is enclosed with _________.",
-        answers: ["1. quotes", "2. curly brackets", "3. parenthesis", "4. square brackets", ],
-        correct: "answer3",
+    for(var i = 0; i < question0.answers.length; i++){
+    var ansBtn = document.createElement("button")
+    ansBtn.setAttribute("class", "answer")
+    ansBtn.setAttribute("value", question0.answers[i])
+    ansBtn.textContent = question0.answers[i];
+    btns.appendChild(ansBtn);
     }
+}
+function showQ1(){
     questionEl.textContent = question1.question;
-    answer1.textContent = question1.answers[0];
-    answer2.textContent = question1.answers[1];
-    answer3.textContent = question1.answers[2];
-    answer4.textContent = question1.answers[3];
-};
-function getQ2(){
-    var question2 = {
-        question: "A very useful tool used during development and deugging for printing content to the debugger is:",
-        answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log", ],
-        correct: "answer4",
+    for(var i = 0; i < question1.answers.length; i++){
+    var ansBtn = document.createElement("button")
+    ansBtn.setAttribute("class", "answer")
+    ansBtn.setAttribute("value", question1.answers[i])
+    ansBtn.textContent = question1.answers[i];
+    btns1.appendChild(ansBtn);
     }
+}
+function showQ2(){
     questionEl.textContent = question2.question;
-    answer1.textContent = question2.answers[0];
-    answer2.textContent = question2.answers[1];
-    answer3.textContent = question2.answers[2];
-    answer4.textContent = question2.answers[3];
-};
-function getQ3(){
-    var question3 = {
-        question: "String values must be enclosed within _________ when being assigned to variables.",
-        answers: ["1. commas", "2. curly brackets", "3. quotes", "4. parenthesis", ],
-        correct: "answer3",
+    for(var i = 0; i < question2.answers.length; i++){
+    var ansBtn = document.createElement("button")
+    ansBtn.setAttribute("class", "answer")
+    ansBtn.setAttribute("value", question2.answers[i])
+    ansBtn.textContent = question2.answers[i];
+    btns2.appendChild(ansBtn);
     }
+}
+function showQ3(){
     questionEl.textContent = question3.question;
-    answer1.textContent = question3.answers[0];
-    answer2.textContent = question3.answers[1];
-    answer3.textContent = question3.answers[2];
-    answer4.textContent = question3.answers[3];
-};
-function getQ4(){
-    var question4 = {
-        question: "Arrays in Javascript can be used to store _________.",
-        answers: ["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above", ],
-        correct: "answer4",
+    for(var i = 0; i < question3.answers.length; i++){
+    var ansBtn = document.createElement("button")
+    ansBtn.setAttribute("class", "answer")
+    ansBtn.setAttribute("value", question3.answers[i])
+    ansBtn.textContent = question3.answers[i];
+    btns3.appendChild(ansBtn);
     }
+}
+function showQ4(){
     questionEl.textContent = question4.question;
-    answer1.textContent = question4.answers[0];
-    answer2.textContent = question4.answers[1];
-    answer3.textContent = question4.answers[2];
-    answer4.textContent = question4.answers[3];
+    for(var i = 0; i < question4.answers.length; i++){
+    var ansBtn = document.createElement("button")
+    ansBtn.setAttribute("class", "answer")
+    ansBtn.setAttribute("value", question4.answers[i])
+    ansBtn.textContent = question4.answers[i];
+    btns4.appendChild(ansBtn);
+    }
+}
+
+
+function checkAns0(event){
+    var wrong = 10;
+    var userInput = event.target.value;
+    var right0 = question0.correct;
+    console.log(right0);
+    if (userInput === right0){
+        showCorrect();
+
+    }else{
+        timerCount = timerCount - wrong;
+        timerElement.textContent = timerCount;
+        showWrong();
+    };
 };
+function checkAns1(event){
+    var wrong = 10;
+    var userInput = event.target.value;
+    var right1 = question1.correct;
+    if (userInput === right1){
+        showCorrect();
 
+    }else{
+        timerCount = timerCount - wrong;
+        timerElement.textContent = timerCount;
+        showWrong();
+    };
+}
+function checkAns2(event){
+    var wrong = 10;
+    var userInput = event.target.value;
+    var right2 = question2.correct;
+    if (userInput === right2){
+        showCorrect();
 
+    }else{
+        timerCount = timerCount - wrong;
+        timerElement.textContent = timerCount;
+        showWrong();
+    };
+}
+function checkAns3(event){
+    var wrong = 10;
+    var userInput = event.target.value;
+    var right = question3.correct;
+    if (userInput === right){
+        showCorrect();
 
+    }else{
+        timerCount = timerCount - wrong;
+        timerElement.textContent = timerCount;
+        showWrong();
+    };
+}
+function checkAns4(event){
+    var wrong = 10;
+    var userInput = event.target.value;
+    var right = question4.correct;
+    if (userInput === right){
+        showCorrect();
+
+    }else{
+        timerCount = timerCount - wrong;
+        timerElement.textContent = timerCount;
+        showWrong();
+    };
+}
 
 
 
@@ -168,60 +235,49 @@ function showgameOver(){
 /*function gameOver(){
     showgameOver();
     document.querySelector("submit").addEventListener("click", function () {
-        if (document.querySelector("#input").value == ""){
-
-        }
     }
 
 };*/
 
 //hides option element
 function hideOption(){
-    var correct = document.querySelector(".option");
-    var optionDisplaySetting = correct.style.display;
+    var optionDisplaySetting = optionEl.style.display;
     if (optionDisplaySetting !== "none"){
-        correct.style.display = "none";
+        optionEl.style.display = "none";
     };
 }
 //displays option element
 function showOption(){
-    var option = document.querySelector(".option");
-    var optionDisplaySetting = option.style.display;
+    var optionDisplaySetting = optionEl.style.display;
     if (optionDisplaySetting !== "block"){
-        correct.style.display = "block";
+        optionEl.style.display = "block";
     };
 }
 // shows correct when answer is correct
 function showCorrect(){
-    var correct = document.querySelector(".option");
-    correct.textContent = "Correct";
     showOption();
+    optionEl.textContent = "Correct";
     var timerEl = 1;
     var timerInt = setInterval(function (){
         timerEl--;
         if (timerEl === 0){
-            clearInterval(timerInt);
-            hideOption();
-            timerEl = 1;
+        hideOption();
         };
     }, 1000)
 }
 // shows wrong when answer is wrong
 function showWrong(){
-    var wrong = document.querySelector(".option");
-    wrong.textContent = "Wrong!";
+   optionEl.textContent = "Wrong!";
     showOption();
     var timerEl = 1;
     var timerInt = setInterval(function (){
         timerEl--;
         if (timerEl === 0){
-            clearInterval(timerInt);
-            hideOption();
-            timerEl = 1;
+        hideOption();
         };
     }, 1000)
 }
-
+//hides start
 function hideStart(){
     //grabs the starting page id
     var startPage = document.getElementById("starting-page");
@@ -233,7 +289,8 @@ function hideStart(){
         startPage.style.display = "none";
     };
 };
-function showQuestions() {
+//shows questions
+function showQNA() {
     //grabs the qna id
     var questions = document.getElementById("qna");
 
@@ -246,7 +303,7 @@ function showQuestions() {
     };
 };
 
-
+//starts timer
 function startTimer() {
     //sets timer
     timer = setInterval( function() {
@@ -258,7 +315,7 @@ function startTimer() {
 
 
         //set lose condition
-        if (timerCount === 0) {
+        if (timerCount <= 0) {
             clearInterval(timer);
             /*sends you to enter name for highscore*/
         }
@@ -271,4 +328,8 @@ function startTimer() {
 
 //starts the game when clicking start
 startButton.addEventListener("click", startGame);
-answerBtns.addEventListener("click" )
+btns.addEventListener("click", checkAns0);
+btns1.addEventListener("click", checkAns1);
+btns2.addEventListener("click", checkAns2);
+btns3.addEventListener("click", checkAns3);
+btns4.addEventListener("click", checkAns4);
